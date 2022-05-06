@@ -1,23 +1,40 @@
 // import React from 'react'
 import React, { useState } from 'react';
+import Alert from './alert';
 export default function TextForm(props) {
+const [alertmsg, setalertmsg] = useState(null);
+  
+  const showmsg=(type,message)=>{
+    setalertmsg({
+      msgtype:type,
+      msg:message
+  
+    })
+    setTimeout(() => {
+      setalertmsg(null)
+    }, 2000);
+  }
   function toUpCase() {
     let newtxt = text.toUpperCase();
     settext(newtxt)
+    showmsg("success","converted to uppercase")
   }
   function tolowCase() {
     let newtxt = text.toLowerCase();
     settext(newtxt)
+    showmsg("success","converted to LowerCase")
   }
   function toClear() {
     let newtext = ""
     settext(newtext)
+    showmsg("success","Cleard ")
   }
   function toCopy() {
     console.log("copied")
     let txt = document.getElementById('textarea');
     txt.select();
     navigator.clipboard.writeText(txt.value);
+    showmsg("success","Text are copied")
   }
   function handleOnChange(event) {
     settext(event.target.value)
@@ -25,6 +42,7 @@ export default function TextForm(props) {
   const [text, settext] = useState("");
   return (
     <>
+     <Alert alertmsg={alertmsg}/>
       <div className='container'>
         <h2 className="my-3" style={{color: props.mode === 'dark' ? 'white' : 'black' }}>{props.heading}</h2>
         <div className="mb-3">
