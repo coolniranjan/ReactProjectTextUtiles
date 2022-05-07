@@ -50,7 +50,7 @@ function App() {
 
   return (<>
     <Router>
-      <NavBar title="TextUtiles" mode={mode} togglemode={togglemode} modetxt={modetxt} btndisc={btndisc} />
+      <NavBar title="MyTextUtiles" mode={mode} togglemode={togglemode} modetxt={modetxt} btndisc={btndisc} />
       <Alert alertmsg={alertmsg} />
       <Routes>
         <Route exact path='/' element={<TextForm heading="Enter Your Text To Analyze" mode={mode} />}></Route>
