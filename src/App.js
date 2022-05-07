@@ -29,8 +29,8 @@ function App() {
       setdarkmodetxt("Disable Dark Mode")
       setbtndisc("light")
       showmsg("success","Dark mode enabled")
-
       document.body.style.backgroundColor="#00394d"
+      document.title="dark mode enabled"
       
     }
     else{
@@ -39,6 +39,10 @@ function App() {
       setbtndisc("dark")
       showmsg("success","Light mode enabled")
       document.body.style.backgroundColor="white"
+      document.title="Light mode enabled"
+      setTimeout(() => {
+        document.title="TextUtiles home"
+      }, 2000);
     }
   }
   
