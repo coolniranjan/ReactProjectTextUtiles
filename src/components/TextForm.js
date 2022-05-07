@@ -17,24 +17,45 @@ const [alertmsg, setalertmsg] = useState(null);
   function toUpCase() {
     let newtxt = text.toUpperCase();
     settext(newtxt)
-    showmsg("success","converted to uppercase")
+    if (text==='') {
+      showmsg("warning","Please Enter text")
+    }
+    else{
+      showmsg("success","Converted to UpperCase")
+    }
   }
   function tolowCase() {
     let newtxt = text.toLowerCase();
     settext(newtxt)
-    showmsg("success","converted to LowerCase")
+    if (text==='') {
+      showmsg("warning","Please Enter text")
+    }
+    else{
+      showmsg("success","Converted to LowerCase")
+    }
   }
   function toClear() {
     let newtext = ""
     settext(newtext)
-    showmsg("success","Cleard ")
+    if (text==='') {
+      showmsg("warning","Please Enter text")
+    }
+    else{
+      showmsg("success","Text clered")
+    }
   }
   function toCopy() {
     console.log("copied")
     let txt = document.getElementById('textarea');
     txt.select();
     navigator.clipboard.writeText(txt.value);
-    showmsg("success","Text are copied")
+    if (text==='') {
+      showmsg("warning","Please Enter text")
+    }
+    else{
+    
+      showmsg("success","Text are copied")
+    }
   }
   function handleOnChange(event) {
     settext(event.target.value)

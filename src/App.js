@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import React  from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import AboutUs from './components/AboutUs';
 import './App.css';
-// import AboutUs from './components/AboutUs';
 import NavBar from './components/Navbar';
 import Alert from './components/alert';
 import TextForm from './components/TextForm';
@@ -11,47 +12,51 @@ function App() {
   const [modetxt, setdarkmodetxt] = useState("Enable Dark Mode");
   const [btndisc, setbtndisc] = useState("dark");
   const [alertmsg, setalertmsg] = useState(null);
-  
-  const showmsg=(type,message)=>{
+
+  const showmsg = (type, message) => {
     setalertmsg({
-      msgtype:type,
-      msg:message
-  
+      msgtype: type,
+      msg: message
+
     })
     setTimeout(() => {
       setalertmsg(null)
-    }, 2000);
+    }, 3000);
   }
-  const togglemode=()=>{
-   
-    if(mode==='light'){
+  const togglemode = () => {
+
+    if (mode === 'light') {
       setdarkmode('dark');
       setdarkmodetxt("Disable Dark Mode")
       setbtndisc("light")
-      showmsg("success","Dark mode enabled")
-      document.body.style.backgroundColor="#00394d"
-      document.title="dark mode enabled"
-      
+      showmsg("success", "Dark mode enabled")
+      document.body.style.backgroundColor = "#00394d"
+      document.title = "dark mode enabled"
+
     }
-    else{
+    else {
       setdarkmode('light');
       setdarkmodetxt("Enable Dark Mode")
       setbtndisc("dark")
-      showmsg("success","Light mode enabled")
-      document.body.style.backgroundColor="white"
-      document.title="Light mode enabled"
+      showmsg("success", "Light mode enabled")
+      document.body.style.backgroundColor = "white"
+      document.title = "Light mode enabled"
       setTimeout(() => {
-        document.title="TextUtiles home"
+        document.title = "TextUtiles home"
       }, 2000);
     }
   }
-  
+
   return (<>
-    <NavBar title="TextUtiles" abouttxt="About Us" hm="Home" mode={mode} togglemode={togglemode} modetxt={modetxt} btndisc={btndisc}/>
-    {/* <NavBar/> */}
-   <Alert alertmsg={alertmsg}/>
-    <TextForm heading="Enter Your Text To Analyze"  mode={mode}/>
-    {/* <AboutUs/> */}
+    <Router>
+      <NavBar title="TextUtiles" mode={mode} togglemode={togglemode} modetxt={modetxt} btndisc={btndisc} />
+      <Alert alertmsg={alertmsg} />
+      <Routes>
+        <Route exact path='/' element={<TextForm heading="Enter Your Text To Analyze" mode={mode} />}></Route>
+        <Route exact path='/about' element={<AboutUs />}></Route>
+        {/* <Route path='*' element={<Error />}></Route> */}
+      </Routes>
+    </Router>
   </>
   );
 }
