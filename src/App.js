@@ -6,6 +6,7 @@ import './App.css';
 import NavBar from './components/Navbar';
 import Alert from './components/alert';
 import TextForm from './components/TextForm';
+import Error from './components/Error';
 
 function App() {
   const [mode, setdarkmode] = useState('light');
@@ -54,7 +55,7 @@ function App() {
       <Routes>
         <Route exact path='/' element={<TextForm heading="Enter Your Text To Analyze" mode={mode} />}></Route>
         <Route exact path='/about' element={<AboutUs />}></Route>
-        {/* <Route path='*' element={<Error />}></Route> */}
+        <Route path='*' element={<Error />}></Route>
       </Routes>
     </Router>
   </>
