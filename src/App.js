@@ -32,7 +32,7 @@ function App() {
       setbtndisc("light")
       showmsg("success", "Dark mode enabled")
       document.body.style.backgroundColor = "#00394d"
-      document.title = "dark mode enabled"
+      // document.title = "dark mode enabled"
 
     }
     else {
@@ -41,10 +41,10 @@ function App() {
       setbtndisc("dark")
       showmsg("success", "Light mode enabled")
       document.body.style.backgroundColor = "white"
-      document.title = "Light mode enabled"
-      setTimeout(() => {
-        document.title = "TextUtiles home"
-      }, 2000);
+      // document.title = "Light mode enabled"
+      // setTimeout(() => {
+      //   document.title = "TextUtiles home"
+      // }, 2000);
     }
   }
 
@@ -54,7 +54,7 @@ function App() {
       <Alert alertmsg={alertmsg} />
       <Routes>
         <Route exact path='/' element={<TextForm heading="Enter Your Text To Analyze" mode={mode} />}></Route>
-        <Route exact path='/about' element={<AboutUs />}></Route>
+        <Route exact path='/about' element={<AboutUs mode={mode}/>}></Route>
         <Route path='*' element={<Error />}></Route>
       </Routes>
     </Router>

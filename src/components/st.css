@@ -3,3 +3,11 @@
     font-weight: bold; 
  
 }
+.my-1 {
+    margin-top: 6rem!important;
+    margin-bottom: 2rem!important;
+    margin-left: 2rem;
+}
+#mrgn{
+    margin-top: 4rem;
+}
